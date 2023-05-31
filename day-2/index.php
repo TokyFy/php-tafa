@@ -4,13 +4,17 @@ function getStats (array $numbers): array
 {
     $odds = [];
     $evens = [];
+    $sum = 0;
 
     foreach ($numbers as $number) {
+        $sum += $number;
         $number % 2 === 0 ? array_push($evens , $number) : array_push($odds , $number);
     }
 
+    $average = $sum / count($numbers);
+
     return [
-        "Average" => array_reduce($numbers , function ($s , $el){ return $s + $el; }) / count($numbers),
+        "Average" => $average,
         "evens" => $evens,
         "odds" => $odds
     ];
